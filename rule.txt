@@ -1,0 +1,454 @@
+! Title: myRule
+! Expires: 6 hours
+! Version: 20240830
+
+! おすすめ一番上の広告右上メニューボタン
+x.com,twitter.com##div[data-testid="eventHero"] + div:has([aria-label="もっと見る"])
+! おすすめ　トレンド以外を非表示し、表示させなおす
+x.com,twitter.com##[aria-label="タイムライン: 話題を検索"] > div > div
+x.com,twitter.com##[data-testid="trend"]:upward([data-testid="cellInnerDiv"]):style(display: revert !important)
+x.com,twitter.com##[aria-label="タイムライン: 話題を検索"] h2 > div > span:has-text(トレンド):upward([data-testid="cellInnerDiv"]):style(display: revert !important)
+
+! twitterトレンド順位消す
+x.com,twitter.com##div[aria-label="タイムライン: 話題を検索"] div[data-testid="trend"] > div[id] > div:first-child > div:first-child:not(:only-child)
+x.com,twitter.com##div[aria-label="タイムライン: 話題を検索"] div[data-testid="trend"] > div[id] > div:first-child > div:nth-child(2)
+
+! 話題を検索タブ
+! ニュース
+x.com,twitter.com##a[href="/explore/tabs/news"]:upward(1)
+! スポーツ
+x.com,twitter.com##a[href="/explore/tabs/sports"]:upward(1)
+! エンターテイメント
+x.com,twitter.com##a[href="/explore/tabs/entertainment"]:upward(1)
+! 横スクロールの矢印
+x.com,twitter.com##[aria-label="ホームタイムライン"]:not(:has([aria-label="タイムライン: トピック"])) div[data-testid="ScrollSnap-nextButtonWrapper"]
+x.com,twitter.com##[aria-label="ホームタイムライン"]:not(:has([aria-label="タイムライン: トピック"])) div[data-testid="ScrollSnap-prevButtonWrapper"]
+
+! 新しいリストを見つける
+x.com,twitter.com##[aria-label="タイムライン: 自分のリスト"] [data-testid="cellInnerDiv"]:is(:has(h2):has(+div [aria-label="フォロー"][role="button"]),:has([aria-label="フォロー"][role="button"]),:has([href="/i/lists/suggested"]))
+
+! コミュニティを探す
+x.com,twitter.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:has(h2 > div[style^="-webkit"] > span:has-text(コミュニティを探す))
+x.com,twitter.com##[aria-label="タイムライン: タイムラインを検索"] [data-testid="cellInnerDiv"]:is(:has([href^="/i/communities"]),:has([href="/i/communities/suggested"]) + div:has(> div > div:empty))
+
+! トレンドやおすすめなどのタブ透過をやめる
+x.com,twitter.com##[aria-label="ホームタイムライン"] > div:first-child:style(background-color: rgba(255, 255, 255, 1))
+
+! 左下自分のアカウント名だけ隠す
+x.com,twitter.com##[aria-label="アカウントメニュー"] > div:nth-of-type(2)
+! 左下アカウント画像を暗く
+x.com,twitter.com##[aria-label="アカウントメニュー"] [data-testid^="UserAvatar-Container"] > div > div > div > div > div > div:style(filter: blur(5px))
+
+! 検索結果の関連していますか
+x.com,twitter.com##[aria-label="タイムライン: タイムラインを検索"] [aria-labelledby][role="group"] span:has-text(このポストは検索内容に関連していますか？):upward(div[style^="transform"])
+
+! 長文ツイート表示
+x.com,twitter.com##[data-testid="tweetText"]:style(line-height: normal !important; -webkit-line-clamp: initial !important;)
+
+! プロフィールのフォロしている人
+x.com,twitter.com##[aria-label="ホームタイムライン"] div.r-ymttw5 > div.r-1s2bzr4
+x.com,twitter.com##div[data-testid="HoverCard"] > div > div > div.r-bt1l66
+! プロフィールのtwitter始めた日
+x.com,twitter.com##[aria-label="ホームタイムライン"] span[data-testid="UserJoinDate"]
+! プロフィールの場所
+x.com,twitter.com##[aria-label="ホームタイムライン"] div.r-13qz1uu > div:first-child > div.r-ymttw5:nth-child(3)
+! プロフィールの関連アカウント、ハイライト、サブスク
+! 例　https://twitter.com/lovelive_SIF
+x.com,twitter.com##nav[aria-label="プロフィールタイムライン"] a[href$="/affiliates"]:upward(1)
+x.com,twitter.com##nav[aria-label="プロフィールタイムライン"] a[href$="/highlights"]:upward(1)
+x.com,twitter.com##nav[aria-label="プロフィールタイムライン"] a[href$="/superfollows"]:upward(1)
+
+! もっと見つける
+x.com,twitter.com##[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:has-text(/もっと見つける|その他のツイート/))
+x.com,twitter.com##[aria-label="タイムライン: 会話"] [data-testid="cellInnerDiv"]:has(h2:has-text(/もっと見つける|その他のツイート/)) ~ div
+
+! メディア一覧モザイク
+!x.com,twitter.com##article[data-testid="tweet"] div[aria-labelledby] > div > div > div > div > div:style(filter: none !important)
+!x.com,twitter.com##article[data-testid="tweet"] div[aria-labelledby] > div:not([data-testid]) > div:not([role="button"]) > div:only-child > div > div:nth-child(2):not([data-testid="tweetText"])
+x.com,twitter.com##[aria-label$="さんのメディア"] [role="listitem"] > div > div > div > div:first-child:style(filter: none !important)
+x.com,twitter.com##[aria-label$="さんのメディア"] [role="listitem"] > div > div > div > div:last-child
+
+! 雪フィルタ引用(https://raw.githubusercontent.com/Yuki2718/adblock/master/japanese/jp-annoyances.txt)
+! おすすめユーザー
+!twitter.com##div[aria-label="タイムライン: ホームタイムライン"] h2 > div[style^="-webkit"] > span:has-text(/おすすめユーザー|Who to follow|おすすめクリエイター/):upward(div[style^=transform])
+!twitter.com##div[aria-label="タイムライン: ホームタイムライン"] div[aria-label^=フォロー][role=button]:upward(div[style^=transform])
+!twitter.com##div[aria-label="タイムライン: ホームタイムライン"] div[aria-label^=購入する][role=button]:upward(div[style^=transform])
+!twitter.com##div[aria-label="タイムライン: ホームタイムライン"] a[href^="/i/connect_people?"]:upward(div[style^=transform])
+!twitter.com##div[aria-label="タイムライン: ホームタイムライン"] a[href^="/i/connect_people?"]:upward(div[style^=transform]) + div[style^=transform]:has(> div > div:empty)
+!twitter.com##div[aria-label^=タイムライン][aria-label$="さんのポスト"] h2 > div[style^="-webkit"] > span:has-text(/おすすめユーザー|Who to follow/):upward(div[style^=transform])
+!twitter.com##div[aria-label^=タイムライン][aria-label$="さんのポスト"] div[aria-label^=フォロー][role=button]:upward(div[style^=transform])
+!twitter.com##div[aria-label^=タイムライン][aria-label$="さんのポスト"] a[href^="/i/connect_people?"]:upward(div[style^=transform])
+!twitter.com##div[aria-label^=タイムライン][aria-label$="さんのポスト"] a[href^="/i/connect_people?"]:upward(div[style^=transform]) + div[style^=transform]:has(> div > div:empty)
+!twitter.com##div[aria-label^=タイムライン][aria-label$="さんのポスト"] a[href^="/i/connect_people?"]:upward(div[style^=transform]) + div[style^=transform] + div[style^=transform]:has(> div > div:empty)
+
+
+
+! 上のタブ
+nicovideo.jp##[href^="https://account.nicovideo.jp/premium/register?site="]
+nicovideo.jp##.nico-CommonHeaderRoot [href^="https://ch.nicovideo.jp"]
+nicovideo.jp##.nico-CommonHeaderRoot [href^="https://seiga.nicovideo.jp"]
+nicovideo.jp##.nico-CommonHeaderRoot [href^="https://dic.nicovideo.jp"]
+nicovideo.jp##.nico-CommonHeaderRoot [href^="https://jk.nicovideo.jp"]
+! 上のタブその他
+nicovideo.jp##.nico-CommonHeaderRoot > div > div > div:nth-of-type(1) > div
+! 上のタブ通知
+nicovideo.jp##.nico-CommonHeaderRoot path[d^="M10.913 22c1.44"]:upward(4)
+! ランキングの提供、ニコニ広告、動画サムネのラッパマーク
+||nicoad.nicovideo.jp^$domain=www.nicovideo.jp
+!フッター
+nicovideo.jp##footertant)
+! 一度見た動画の下の赤線
+nicovideo.jp##.NC-VideoPlaybackIndicator
+! 有料の関連動画
+www.nicovideo.jp##a[data-anchor-area="related_content,recommendation"]:has(>div:nth-of-type(2)>div:nth-of-type(2)>span:nth-of-type(2))
+! headerを追従させないように
+nicovideo.jp##body>div>div>header:style(position:unset!important)
+! @ジャンプ回避
+www.nicovideo.jp##+js(json-prune-fetch-response, data.threads.0.comments.*.vposMs, , propsToMatch, public.nvcomment.nicovideo.jp/v1/threads)
+
+! ジャンル
+! ジャンル選択アニメ・旅行以外なくす
+www.nicovideo.jp##.VideoTopGenreListContainer-item:not(:has([href="/video_top/genre/anime"],[href="/video_top/genre/traveling_outdoor"]))
+www.nicovideo.jp##.RankingGenreListContainer:style(background-color:transparent!important)
+www.nicovideo.jp##.VideoTopGenreListContainer-item:not(:has([href="/video_top/genre/anime"]))
+www.nicovideo.jp##.VideoTopGenreListContainer:style(background-color:transparent!impor
+! ジャンルの隙間
+nicovideo.jp##.VideoIntroductionsChoiceContainer:upward(.BaseLayout-block)
+nicovideo.jp##.Separator:has(+ .RankingVideosContainer)
+! 注目のタグ
+www.nicovideo.jp##.TrendyTagAreaContainer:upward(.BaseLayout-block)
+! 新着投稿動画
+www.nicovideo.jp##.NewArrivalVideosContainer:upward(.BaseLayout-block)
+! 注目タグの動画
+www.nicovideo.jp##.TrendyTagsWithVideosContainer:upward(.BaseLayout-block)
+! タグ
+www.nicovideo.jp##.RepresentedTagsContainer
+! 新着コメント動画
+www.nicovideo.jp##.NewCommentVideosContainer:upward(.BaseLayout-block)
+! おすすめ
+www.nicovideo.jp##.RecommendVideosContainer:upward(.BaseLayout-block)
+! TV放送中のアニメチャンネル
+www.nicovideo.jp##.OnTvAnimeChannelsContainer:upward(.BaseLayout-block)
+
+
+
+! ホームのミックスリスト
+youtube.com##[page-subtype="home"] #video-title-link[title*="ミックス"][href$="start_radio=1"]:upward(ytd-rich-item-renderer)
+! 動画右のミックスリスト
+youtube.com##ytd-compact-radio-renderer
+! 動画右のYoutube Music
+youtube.com##ytd-compact-playlist-renderer
+! 動画右youtube movie
+youtube.com##ytd-compact-movie-renderer
+! ホームのYoutube music
+youtube.com##[page-subtype="home"] a[href="/music"]:upward(ytd-rich-item-renderer)
+
+! ホームshort
+youtube.com##[page-subtype="home"] #video-title-link:has-text(/#short/i):upward(ytd-rich-item-renderer)
+! 動画右short
+youtube.com##ytd-watch-next-secondary-results-renderer a[href^="/shorts/"]:upward(ytd-compact-video-renderer)
+youtube.com##ytd-watch-next-secondary-results-renderer ytd-reel-shelf-renderer
+! 登録チャンネルshort
+youtube.com##[page-subtype="subscriptions"] [overlay-style="SHORTS"]:upward(ytd-rich-item-renderer)
+! 検索結果short
+youtube.com##ytd-search [overlay-style="SHORTS"]:upward(ytd-video-renderer)
+
+! ホームライブ
+youtube.com##[page-subtype="home"] .badge-style-type-live-now-alternate:upward(ytd-rich-item-renderer)
+! ホーム配信予定
+youtube.com##[page-subtype="home"] ytd-thumbnail-overlay-time-status-renderer[overlay-style="UPCOMING"]:upward(ytd-rich-item-renderer)
+! ホーム配信済み
+youtube.com##[page-subtype="home"] ytd-rich-item-renderer:has(#metadata-line > .inline-metadata-item:has-text(に配信済み))
+! 動画右ライブ
+youtube.com##ytd-watch-next-secondary-results-renderer .badge-style-type-live-now-alternate:upward(ytd-compact-video-renderer)
+! 動画右配信予定
+youtube.com##ytd-watch-next-secondary-results-renderer ytd-thumbnail-overlay-time-status-renderer[overlay-style="UPCOMING"]:upward(ytd-compact-video-renderer)
+! 動画右配信済み
+youtube.com##ytd-watch-next-secondary-results-renderer ytd-compact-video-renderer:has(#metadata-line > .inline-metadata-item:has-text(に配信済み))
+! 登録チャンネルライブ
+youtube.com##[page-subtype="subscriptions"] .badge-style-type-live-now-alternate:upward(ytd-rich-item-renderer)
+! 登録チャンネル配信予定のライブ
+youtube.com##[page-subtype="subscriptions"] ytd-thumbnail-overlay-time-status-renderer[overlay-style="UPCOMING"]:upward(ytd-rich-item-renderer)
+! 登録チャンネル配信済み
+youtube.com##[page-subtype="subscriptions"] ytd-rich-item-renderer:has(#metadata-line > .inline-metadata-item:has-text(に配信済み))
+! 検索結果ライブ
+youtube.com##ytd-search .badge-style-type-live-now-alternate:upward(ytd-video-renderer)
+! 検索結果配信予定
+youtube.com##ytd-search ytd-thumbnail-overlay-time-status-renderer[overlay-style="UPCOMING"]:upward(ytd-video-renderer)
+! 検索結果配信済み
+youtube.com##ytd-search ytd-video-renderer:has(#metadata-line > .inline-metadata-item:has-text(に配信済み))
+! 検索結果サムネイル小さく
+youtube.com##ytd-search [use-bigger-thumbs]:remove-attr(use-bigger-thumbs)
+youtube.com##ytd-search:remove-attr(has-bigger-thumbs)
+! 検索結果の検索結果の他の人はこちらも視聴していますなど
+youtube.com##ytd-search ytd-item-section-renderer>#contents>:not(ytd-video-renderer,ytd-channel-renderer),ytd-secondary-search-container-renderer
+
+! 動画オーバーレイ前へ次へ
+youtube.com##.ytp-next-button[data-title-no-tooltip="次へ"]
+youtube.com##.ytp-prev-button[title="もう一回見る"]
+! 動画オーバーレイ字幕使えないときは非表示
+youtube.com##.ytp-subtitles-button[data-title-no-tooltip="字幕を利用できません"]
+! 動画オーバーレイミニプレイヤー
+youtube.com##.ytp-button.ytp-miniplayer-button
+! 動画オーバーレイシアターモード
+youtube.com##.ytp-button.ytp-size-button
+! 動画オーバーレイ自動再生
+youtube.com##.ytp-button[data-tooltip-target-id="ytp-autonav-toggle-button"]
+! 動画下の説明欄
+youtube.com###clarify-box
+! 概要欄の文字起こし
+youtube.com##ytd-text-inline-expander > [slot="extra-content"]:has(ytd-structured-description-content-renderer)
+! 動画下グッズなど
+youtube.com##ytd-merch-shelf-renderer
+! 動画右上のジャンル選択
+youtube.com##yt-related-chip-cloud-renderer
+
+! 動画下新UIを改善
+! タイトルのフォントサイズを小さくする
+youtube.com###title .ytd-watch-metadata:style(font-weight: 400;font-size: 1.8rem;)
+! 概要欄のもっと見るを薄く
+youtube.com##tp-yt-paper-button#expand:style(color: var(--yt-spec-text-secondary)!important;font-size: 1.3rem!important)
+! 一部を表示を薄く
+youtube.com##tp-yt-paper-button#collapse:style(color: var(--yt-spec-text-secondary)!important;font-size: 1.3rem!important)
+! 高評価数を非表示
+youtube.com##.yt-spec-button-shape-next--icon-leading[aria-pressed] > .yt-spec-button-shape-next__button-text-content
+! 高評価調整
+youtube.com##button.yt-spec-button-shape-next--segmented-start > .yt-spec-button-shape-next__icon:style(margin-right: -6px !important; margin-left: -2px !important;)
+youtube.com##button.yt-spec-button-shape-next--segmented-start > .yt-spec-button-shape-next__icon > yt-icon:style(padding-left: 2px !important;)
+! 低評価調整
+youtube.com##button.yt-spec-button-shape-next--segmented-end:style(width: 46px !important;)
+youtube.com##button.yt-spec-button-shape-next--segmented-end > .yt-spec-button-shape-next__icon:style(margin-left: -3px !important;)
+! 動画下クリップ、Thanks、オフライン
+!youtube.com##yt-button-view-model:has(button[aria-label="Thanks"])
+!youtube.com##yt-button-view-model:has(button[aria-label="クリップ"])
+youtube.com##button[aria-label="Thanks"]:upward(yt-button-view-model)
+youtube.com##button[aria-label="クリップ"]:upward(yt-button-view-model)
+! 動画下共有と保存の文字を非表示
+youtube.com##[aria-label="共有"] > .yt-spec-button-shape-next__button-text-content
+youtube.com##[aria-label="再生リストに保存"] > .yt-spec-button-shape-next__button-text-content
+! 共有、保存調整
+youtube.com##button.yt-spec-button-shape-next--icon-leading > .yt-spec-button-shape-next__icon:style(margin-right: -5px !important; margin-left: -4px !important;)
+! 概要欄の再生回数と投稿日時を薄く
+!youtube.com###info.ytd-watch-metadata:style(color: var(--yt-spec-text-secondary)!important)
+
+! 動画終了前のおすすめ動画
+youtube.com##.ytp-ce-element
+! 動画終了後のエンドスクリーンと自動再生無効
+/endscreen.js$script,important,domain=youtube.com
+! メンバーになる
+youtube.com###sponsor-button
+! チャンネル トレーラー
+youtube.com##[page-subtype="channels"] ytd-channel-video-player-renderer:upward(ytd-item-section-renderer)
+! チャンネル ライブなど
+youtube.com##[page-subtype="channels"] ytd-channel-featured-content-renderer:upward(ytd-item-section-renderer)
+! チャンネル メンバー一覧
+youtube.com##[page-subtype="channels"] ytd-item-section-renderer:has(ytd-recognition-shelf-renderer)
+! チャンネル shortsリスト
+youtube.com##[page-subtype="channels"] ytd-item-section-renderer:not([use-height-hack]):has(ytd-reel-shelf-renderer)
+! チャンネル メンバー限定
+youtube.com##[page-subtype="channels"] ytd-item-section-renderer:has(.badge-style-type-members-only)
+! チャンネルの最近アップロードされた動画と人気の動画切り替え
+youtube.com##ytd-rich-grid-renderer #header
+!チャット見れない時は消す
+youtube.com##yt-formatted-string#message:has-text(/この動画ではチャットのリプレイを利用できません|このプレミア公開では、チャットのリプレイは無効です/):upward(ytd-live-chat-frame)
+
+! ホーム上のジャンル選択
+youtube.com##[page-subtype="home"] #header
+! 音声検索
+youtube.com###voice-search-button
+! 右上通知
+youtube.com##ytd-notification-topbar-button-renderer
+! 右上動画投稿
+youtube.com##ytd-topbar-menu-button-renderer[is-icon-button]
+! ホーム左のショート
+youtube.com##ytd-guide-entry-renderer > [title="ショート"]
+! ホーム左のマイページ
+youtube.com##ytd-guide-collapsible-section-entry-renderer > #header
+! ホーム左のチャンネル・作成した動画
+youtube.com##ytd-guide-collapsible-section-entry-renderer > #section-items > ytd-guide-entry-renderer:first-of-type
+youtube.com##ytd-guide-collapsible-section-entry-renderer > #section-items > ytd-guide-entry-renderer:nth-of-type(3)
+! ホーム左下の他のサービス
+youtube.com##ytd-guide-section-renderer:has(h3:has-text(/YouTube の他のサービス|探索/))
+youtube.com##ytd-guide-section-renderer:has([title="設定"])
+! ホーム左下の概要
+youtube.com##tp-yt-app-drawer #footer
+! ホーム左チャンネル一覧
+youtube.com##[href="/feed/guide_builder"]
+! ホーム左チャンネル一覧折りたたむ
+youtube.com##ytd-guide-section-renderer:has(h3:has-text(登録チャンネル)) #expanded > ytd-guide-entry-renderer
+! 左サイドバー生放送アイコン
+youtube.com##ytd-guide-section-renderer #endpoint[href^="/@"] yt-icon
+! 左サイドバー動画通知アイコン
+youtube.com##ytd-guide-section-renderer #newness-dot
+! ホームの動画評価
+youtube.com##ytd-inline-survey-renderer:upward(2)
+! ホームでショートなどの動画以外
+youtube.com##[page-subtype="home"] ytd-rich-section-renderer
+youtube.com##[page-subtype="subscriptions"] ytd-rich-section-renderer
+! 一度見た動画の下の赤線
+youtube.com##ytd-thumbnail-overlay-resume-playback-renderer
+! ホームの最新のYouTube投稿
+!youtube.com##ytd-rich-section-renderer:has(h2.ytd-rich-shelf-renderer:has-text(最新の YouTube 投稿))
+! ホームで動画にカーソルを当てた時の字幕
+youtube.com##.ytp-progress-bar-container #ytp-caption-window-container
+! ホーム動画プレビューの字幕
+youtube.com###inline-preview-player > #ytp-caption-window-container
+
+! 消した跡を埋める
+youtube.com##ytd-browse:is([page-subtype="home"],[page-subtype="subscriptions"],[page-subtype="channels"]) :is(ytd-rich-grid-row, #contents.ytd-rich-grid-row):style(display: contents !important)
+youtube.com##ytd-rich-item-renderer[is-slim-grid]:first-of-type:style(margin-left: auto !important;)
+youtube.com##ytd-rich-item-renderer[is-slim-grid]:last-of-type:style(margin-right: auto !important;)
+
+
+! ログインしていない状態
+! 動画概要欄のコメント欄
+youtube.com###comment-teaser
+
+
+! reddit
+reddit.com##[data-testid="join-heroes"]:upward(3)
+
+
+! 記事下リアクション
+news.yahoo.co.jp##div[class^="ArticleReaction__Wrapper"]
+! コメント
+news.yahoo.co.jp##aside[class^="CommentShort__Wrapper"]
+news.yahoo.co.jp###articleCommentModule
+news.yahoo.co.jp##a:has-text(おすすめの有料記事):upward(2)
+! 左下浮いてるコメント
+news.yahoo.co.jp##[class^="CommentFloating__"]
+news.yahoo.co.jp##[class^="CommentFloatingCSR__ComponentBalloon-"]
+
+
+! 読売新聞画面下
+yomiuri.co.jp##.p-footer-subscribe
+
+
+fandom.com###WikiaBar
+fandom.com###WikiaRail
+fandom.com##.fandom-sticky-header
+fandom.com##.community-header-wrapper:style(height: 100px!important)
+fandom.com##.page-side-tools__wrapper
+fandom.com##.page-header__actions
+fandom.com##.notifications-placeholder
+fandom.com##ruby > rt
+
+
+! 楽天PR商品
+search.rakuten.co.jp##.searchresults [href^="https://grp07.ias.rakuten.co.jp/redirect_rpp/"]:upward(.searchresultitem)
+
+
+! google検索
+google.com##[aria-labelledby="task-text"][role="dialog"] span:has-text(Google の機能改善にご協力をお願いします):upward(4)
+
+
+! カーソルで画像拡大
+gigafree.net###preview
+
+
+! dアニメストア
+! アニメやブックのジャンル選択
+animestore.docomo.ne.jp##div[data-component="topCategoryMenu"][data-component-type="anime"]
+animestore.docomo.ne.jp##.headerTab
+animestore.docomo.ne.jp##:matches-path(/animestore/mp_viw_pc).announceArea
+animestore.docomo.ne.jp##.headerSubTab:style(margin: 10px auto !important;)
+! お知らせ
+animestore.docomo.ne.jp##.isNotice
+
+
+! コメントtwitter投稿
+abema.tv##.com-o-CommentForm__twitter-wrapper
+! 右サイドバー
+abema.tv##[href="/mylist"]
+abema.tv##[href="/viewing-history"]
+abema.tv##[href="/purchased/payperview"]
+abema.tv##.com-application-SideNavigationGenreHeading
+abema.tv##.com-application-SideNavigationMainList__genre-wrapper
+abema.tv##.c-application-SideNavigation__footer
+! CMマイリスト
+abema.tv##.com-tv-SlotMyListButtonOnPlayerContainerView
+! アニメ以外を消す
+abema.tv##.com-tv-LinearChannelList__item:has(:is([href^="/now-on-air/asia-drama"],[href="/now-on-air/k-world"],[href="/now-on-air/commercial"],[href="/now-on-air/hiphop"],[href="/now-on-air/abema-radio"],[href^="/now-on-air/fighting-sports"],[href^="/now-on-air/world-sports"],[href="/now-on-air/abema-news"],[href="/now-on-air/news-plus"],[href="/now-on-air/abema-special"],[href^="/now-on-air/special-plus"],[href^="/now-on-air/drama"],[href^="/now-on-air/premierleague"],[href="/now-on-air/boatrace"],[href="/now-on-air/keirin-auto"],[href="/now-on-air/fishing"],[href^="/now-on-air/shogi"],[href^="/now-on-air/mahjong"],[href="/now-on-air/sumo"],[href="/now-on-air/boxing"],[href^="/now-on-air/family-anime-"],[href^="/now-on-air/80s-anime-"],[href^="/now-on-air/90s-anime-"],[href^="/now-on-air/00s-anime-"],[href="/now-on-air/metrock"],[href^="/now-on-air/asia-"],[href="/now-on-air/baseball-anime"],[href="/now-on-air/rizin"]))
+abema.tv##.com-tv-LinearChannelList::before
+abema.tv##.com-tv-LinearChannelList::after
+abema.tv##.com-tv-LinearChannelList__inner:style(margin-top: 8em!important)
+! 最初からみる
+abema.tv##.com-tv-LinearFooterChasePlayButton
+! ロゴ
+abema.tv##.com-tv-LinearFooter__logo
+! 画面下フィルター
+abema.tv##.com-tv-LinearFooter:style(background-image:none !important)
+! お使いのブラウザは推奨環境外
+abema.tv##.com-m-NotificationManager
+
+
+! ビリビリ邪魔なポップアップ隠蔽
+bilibili.com##.v-popover
+bilibili.com##.bpx-player-toast-wrap
+
+
+! discord画像モザイク
+discord.com##.imageContent-3Av-9c:style(filter:none !important;)
+discord.com##.spoilerWarning-8ovW0v
+discord.com##.spoilerAttachment-1QvPhn:style(filter:none !important;)
+! discord文字モザイク
+discord.com##.spoilerText-2G40u0 > .inlineContent-2RshAT:style(opacity: 1 !important;pointer-events: auto !important;cursor: auto !important;)
+discord.com##.spoilerText-2G40u0:style(background-color: hsla(0,calc(var(--saturation-factor, 1)*0%),100%,.1) !important;)
+! discordリンクモザイク
+discord.com##.grid-1aWVsE:style(filter:none !important;)
+discord.com##.spoilerWarning-1JN1Ot
+
+
+! telegramの投稿日時非表示(自動翻訳時に誤認識防止の為)
+web.telegram.org##.time.tgico:remove()
+
+
+! amazonトップページ上
+amazon.co.jp###desktop-banner
+
+
+! 検索結果の人気の作品(プレミアム機能)
+pixiv.net##[href="/premium/lead/lp?g=anchor&i=popular_works_list&p=free_campaign&page=visitor"]:upward(2)
+
+
+! noteテキスト選択時の共有ポップアップ
+note.com##.m-shareSheet
+
+
+! 画像モザイク
+www.reddit.com##img:style(filter: none!important)
+! New Posts
+www.reddit.com##._369llFshxbL10dgfLlIApJ
+! ヘッダー
+www.reddit.com##[href^="https://ads.reddit.com"]
+www.reddit.com##.x0hiXHicn7r3BG9m1FJH4
+
+
+! 広告跡
+darkwebuser.blogspot.com##[id$="-ad"]
+darkwebuser.blogspot.com##div.twt-sub
+
+
+! はてな編集プロモ
+blog.hatena.ne.jp###editor-main #promotion
+
+
+! gogole検索現在地
+www.google.com###footcnt > div[style] > div#fbar > div.b2hzT
+www.google.com###oFNiHe
+! 上のフィルタに伴うサイズ調整
+www.google.com###footcnt > #fbarcnt:style(height: 60px !important;)
+
+
+! amazonアフィ
+||amazon.*$removeparam=linkCode
+! アマゾンプライム 再生時のフィルター
+www.amazon.co.jp##.atvwebplayersdk-overlays-container > .fkpovp9:nth-child(1):style(background: none !important;)
+www.amazon.co.jp##.atvwebplayersdk-bottompanel-container > .atvwebplayersdk-carousel-container
+www.amazon.co.jp##.atvwebplayersdk-miro-gradient-enabled:style(background: none !important;)
+
+
+! deeplポップアップ
+deepl.com###headlessui-portal-root
+! 「翻訳するにはテキストを入力してください」
+www.deepl.com##span.lmt__textarea_placeholder_text
