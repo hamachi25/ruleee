@@ -1,6 +1,6 @@
 ! Title: myRule
 ! Expires: 6 hours
-! Version: 20240830
+! Version: 20240902
 
 ! おすすめ一番上の広告右上メニューボタン
 x.com,twitter.com##div[data-testid="eventHero"] + div:has([aria-label="もっと見る"])
@@ -253,7 +253,7 @@ youtube.com##ytd-rich-grid-renderer #header
 youtube.com##yt-formatted-string#message:has-text(/この動画ではチャットのリプレイを利用できません|このプレミア公開では、チャットのリプレイは無効です/):upward(ytd-live-chat-frame)
 
 ! ホーム上のジャンル選択
-youtube.com##[page-subtype="home"] #header
+youtube.com##ytd-feed-filter-chip-bar-renderer
 ! 音声検索
 youtube.com###voice-search-button
 ! 右上通知
@@ -293,11 +293,6 @@ youtube.com##ytd-thumbnail-overlay-resume-playback-renderer
 youtube.com##.ytp-progress-bar-container #ytp-caption-window-container
 ! ホーム動画プレビューの字幕
 youtube.com###inline-preview-player > #ytp-caption-window-container
-
-! 消した跡を埋める
-youtube.com##ytd-browse:is([page-subtype="home"],[page-subtype="subscriptions"],[page-subtype="channels"]) :is(ytd-rich-grid-row, #contents.ytd-rich-grid-row):style(display: contents !important)
-youtube.com##ytd-rich-item-renderer[is-slim-grid]:first-of-type:style(margin-left: auto !important;)
-youtube.com##ytd-rich-item-renderer[is-slim-grid]:last-of-type:style(margin-right: auto !important;)
 
 
 ! ログインしていない状態
