@@ -254,6 +254,7 @@ youtube.com##yt-formatted-string#message:has-text(/この動画ではチャッ�
 
 ! ホーム上のジャンル選択
 youtube.com##ytd-feed-filter-chip-bar-renderer
+youtube.com###background
 ! 音声検索
 youtube.com###voice-search-button
 ! 右上通知
