@@ -1,6 +1,6 @@
 ! Title: myRule
 ! Expires: 6 hours
-! Version: 20241113
+! Version: 20250204
 
 ! おすすめ一番上の広告右上メニューボタン
 x.com,twitter.com##div[data-testid="eventHero"] + div:has([aria-label="もっと見る"])
@@ -68,21 +68,6 @@ x.com,twitter.com##[aria-label="タイムライン: 会話"] [data-testid="cellI
 x.com,twitter.com##[aria-label$="さんのメディア"] [role="listitem"] > div > div > div > div:first-child:style(filter: none !important)
 x.com,twitter.com##[aria-label$="さんのメディア"] [role="listitem"] > div > div > div > div:last-child
 
-! 雪フィルタ引用(https://raw.githubusercontent.com/Yuki2718/adblock/master/japanese/jp-annoyances.txt)
-! おすすめユーザー
-!twitter.com##div[aria-label="タイムライン: ホームタイムライン"] h2 > div[style^="-webkit"] > span:has-text(/おすすめユーザー|Who to follow|おすすめクリエイター/):upward(div[style^=transform])
-!twitter.com##div[aria-label="タイムライン: ホームタイムライン"] div[aria-label^=フォロー][role=button]:upward(div[style^=transform])
-!twitter.com##div[aria-label="タイムライン: ホームタイムライン"] div[aria-label^=購入する][role=button]:upward(div[style^=transform])
-!twitter.com##div[aria-label="タイムライン: ホームタイムライン"] a[href^="/i/connect_people?"]:upward(div[style^=transform])
-!twitter.com##div[aria-label="タイムライン: ホームタイムライン"] a[href^="/i/connect_people?"]:upward(div[style^=transform]) + div[style^=transform]:has(> div > div:empty)
-!twitter.com##div[aria-label^=タイムライン][aria-label$="さんのポスト"] h2 > div[style^="-webkit"] > span:has-text(/おすすめユーザー|Who to follow/):upward(div[style^=transform])
-!twitter.com##div[aria-label^=タイムライン][aria-label$="さんのポスト"] div[aria-label^=フォロー][role=button]:upward(div[style^=transform])
-!twitter.com##div[aria-label^=タイムライン][aria-label$="さんのポスト"] a[href^="/i/connect_people?"]:upward(div[style^=transform])
-!twitter.com##div[aria-label^=タイムライン][aria-label$="さんのポスト"] a[href^="/i/connect_people?"]:upward(div[style^=transform]) + div[style^=transform]:has(> div > div:empty)
-!twitter.com##div[aria-label^=タイムライン][aria-label$="さんのポスト"] a[href^="/i/connect_people?"]:upward(div[style^=transform]) + div[style^=transform] + div[style^=transform]:has(> div > div:empty)
-
-
-
 ! 上のタブ
 nicovideo.jp##[href^="https://account.nicovideo.jp/premium/register?site="]
 nicovideo.jp##.nico-CommonHeaderRoot [href^="https://ch.nicovideo.jp"]
@@ -133,15 +118,9 @@ www.nicovideo.jp##.OnTvAnimeChannelsContainer:upward(.BaseLayout-block)
 
 
 ! ホームのミックスリスト
-youtube.com##[page-subtype="home"] #video-title-link[title*="ミックス"][href$="start_radio=1"]:upward(ytd-rich-item-renderer)
-! 動画右のミックスリスト
-youtube.com##ytd-compact-radio-renderer
-! 動画右のYoutube Music
-youtube.com##ytd-compact-playlist-renderer
-! 動画右youtube movie
-youtube.com##ytd-compact-movie-renderer
-! ホームのYoutube music
-youtube.com##[page-subtype="home"] a[href="/music"]:upward(ytd-rich-item-renderer)
+youtube.com##[page-subtype="home"] ytd-rich-item-renderer:has(yt-lockup-view-model)
+! 動画右のミックスリスト・プレイリスト
+youtube.com##ytd-watch-next-secondary-results-renderer yt-lockup-view-model
 
 ! ホームshort
 youtube.com##[page-subtype="home"] #video-title-link:has-text(/#short/i):upward(ytd-rich-item-renderer)
