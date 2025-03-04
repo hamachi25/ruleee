@@ -1,6 +1,6 @@
 ! Title: myRule
 ! Expires: 6 hours
-! Version: 20250204
+! Version: 20250304
 
 ! おすすめ一番上の広告右上メニューボタン
 x.com,twitter.com##div[data-testid="eventHero"] + div:has([aria-label="もっと見る"])
@@ -216,8 +216,6 @@ youtube.com##.ytp-ce-element
 /endscreen.js$script,important,domain=youtube.com
 ! メンバーになる
 youtube.com###sponsor-button
-! チャンネル トレーラー
-youtube.com##[page-subtype="channels"] ytd-channel-video-player-renderer:upward(ytd-item-section-renderer)
 ! チャンネル ライブなど
 youtube.com##[page-subtype="channels"] ytd-channel-featured-content-renderer:upward(ytd-item-section-renderer)
 ! チャンネル メンバー一覧
@@ -273,11 +271,6 @@ youtube.com##ytd-thumbnail-overlay-resume-playback-renderer
 youtube.com##.ytp-progress-bar-container #ytp-caption-window-container
 ! ホーム動画プレビューの字幕
 youtube.com###inline-preview-player > #ytp-caption-window-container
-
-
-! ログインしていない状態
-! 動画概要欄のコメント欄
-youtube.com###comment-teaser
 
 
 ! reddit
