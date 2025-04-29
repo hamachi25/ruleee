@@ -1,6 +1,6 @@
 ! Title: myRule
 ! Expires: 6 hours
-! Version: 20250322
+! Version: 20250429
 
 ! おすすめ一番上の広告右上メニューボタン
 x.com,twitter.com##div[data-testid="eventHero"] + div:has([aria-label="もっと見る"])
@@ -371,10 +371,6 @@ discord.com##.spoilerWarning-1JN1Ot
 
 ! telegramの投稿日時非表示(自動翻訳時に誤認識防止の為)
 web.telegram.org##.time.tgico:remove()
-
-
-! amazonトップページ上
-amazon.co.jp###desktop-banner
 
 
 ! 検索結果の人気の作品(プレミアム機能)
