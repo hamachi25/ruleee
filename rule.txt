@@ -1,6 +1,6 @@
 ! Title: myRule
 ! Expires: 6 hours
-! Version: 20250429
+! Version: 20250509
 
 ! おすすめ一番上の広告右上メニューボタン
 x.com,twitter.com##div[data-testid="eventHero"] + div:has([aria-label="もっと見る"])
@@ -231,6 +231,7 @@ youtube.com##yt-formatted-string#message:has-text(/この動画ではチャッ�
 
 ! ホーム上のジャンル選択
 youtube.com##ytd-feed-filter-chip-bar-renderer
+youtube.com###frosted-glass
 ! 音声検索
 youtube.com###voice-search-button
 ! 動画投稿
