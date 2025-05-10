@@ -1,6 +1,6 @@
 ! Title: myRule
 ! Expires: 6 hours
-! Version: 20250509
+! Version: 20250510
 
 ! おすすめ一番上の広告右上メニューボタン
 x.com,twitter.com##div[data-testid="eventHero"] + div:has([aria-label="もっと見る"])
@@ -245,7 +245,6 @@ youtube.com##ytd-guide-entry-renderer > [title="ショート"]
 ! ホーム左のマイページ
 youtube.com##ytd-guide-collapsible-section-entry-renderer > #header
 ! ホーム左のチャンネル・作成した動画
-youtube.com##ytd-guide-collapsible-section-entry-renderer > #section-items > ytd-guide-entry-renderer:first-of-type
 youtube.com##ytd-guide-collapsible-section-entry-renderer > #section-items > ytd-guide-entry-renderer:nth-of-type(3)
 ! ホーム左下の他のサービス
 youtube.com##ytd-guide-section-renderer:has(h3:has-text(/YouTube の他のサービス|探索/))
