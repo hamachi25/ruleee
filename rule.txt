@@ -1,6 +1,6 @@
 ! Title: myRule
 ! Expires: 6 hours
-! Version: 20250701
+! Version: 20250704
 
 ! おすすめ一番上の広告右上メニューボタン
 x.com,twitter.com##div[data-testid="eventHero"] + div:has([aria-label="もっと見る"])
@@ -120,7 +120,7 @@ www.nicovideo.jp##.OnTvAnimeChannelsContainer:upward(.BaseLayout-block)
 ! ホームのミックスリスト
 youtube.com##[page-subtype="home"] ytd-rich-item-renderer:has(yt-lockup-view-model)
 ! 動画右のミックスリスト・プレイリスト
-!youtube.com##ytd-watch-next-secondary-results-renderer yt-lockup-view-model
+!youtube.com##yt-lockup-view-model:has(yt-collections-stack)
 
 ! ホームshort
 youtube.com##[page-subtype="home"] #video-title-link:has-text(/#short/i):upward(ytd-rich-item-renderer)
