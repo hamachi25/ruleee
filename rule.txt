@@ -118,7 +118,7 @@ www.nicovideo.jp##.OnTvAnimeChannelsContainer:upward(.BaseLayout-block)
 
 
 ! ホームのミックスリスト
-youtube.com##[page-subtype="home"] ytd-rich-item-renderer:has(yt-lockup-view-model)
+!youtube.com##[page-subtype="home"] ytd-rich-item-renderer:has(yt-lockup-view-model)
 ! 動画右のミックスリスト・プレイリスト
 youtube.com##yt-lockup-view-model:has(yt-collections-stack)
 
