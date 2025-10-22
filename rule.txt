@@ -1,6 +1,6 @@
 ! Title: myRule
 ! Expires: 6 hours
-! Version: 20250802
+! Version: 20251022
 
 ! おすすめ一番上の広告右上メニューボタン
 x.com,twitter.com##div[data-testid="eventHero"] + div:has([aria-label="もっと見る"])
@@ -213,7 +213,8 @@ youtube.com##button.yt-spec-button-shape-next--icon-leading > .yt-spec-button-sh
 ! 動画終了前のおすすめ動画
 youtube.com##.ytp-ce-element
 ! 動画終了後のエンドスクリーンと自動再生無効
-/endscreen.js$script,important,domain=youtube.com
+!/endscreen.js$script,important,domain=youtube.com
+youtube.com##.ytp-fullscreen-grid
 ! メンバーになる
 youtube.com###sponsor-button
 ! チャンネル ライブなど
