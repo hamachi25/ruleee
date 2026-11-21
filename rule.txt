@@ -1,6 +1,6 @@
 ! Title: myRule
 ! Expires: 6 hours
-! Version: 20260103
+! Version: 20261121
 
 ! おすすめ一番上の広告右上メニューボタン
 x.com,twitter.com##div[data-testid="eventHero"] + div:has([aria-label="もっと見る"])
@@ -160,7 +160,7 @@ youtube.com##ytd-search ytd-video-renderer:has(#metadata-line > .inline-metadata
 youtube.com##ytd-search [use-bigger-thumbs]:remove-attr(use-bigger-thumbs)
 youtube.com##ytd-search:remove-attr(has-bigger-thumbs)
 ! 検索結果の検索結果の他の人はこちらも視聴していますなど
-youtube.com##ytd-search ytd-item-section-renderer>#contents>:not(ytd-video-renderer,ytd-channel-renderer),ytd-secondary-search-container-renderer
+youtube.com##ytd-search ytd-item-section-renderer>#contents>grid-shelf-view-model
 
 ! 動画オーバーレイ前へ次へ
 youtube.com##.ytp-next-button[data-title-no-tooltip="次へ"]
